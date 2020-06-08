@@ -1,0 +1,3 @@
+[submodule "libev"]
+	path = libev
+	url = https://github.com/mksdev/libev
