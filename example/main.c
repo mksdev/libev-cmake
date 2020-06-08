@@ -15,7 +15,7 @@ void read_stdin_cb(struct ev_loop *loop, struct ev_io *watcher, int revents){
         return;
     }
 
-    // Receive message from client socket
+    // read from stdin
     sz = read(watcher->fd, buffer, BUFFER_SIZE-1);
     if(sz < 0) {
         perror("read error");
@@ -44,11 +44,9 @@ int main()
     struct ev_loop *loop = ev_default_loop(0);
     struct ev_io w_stdin_io;
 
-    // Initialize and start a watcher to accepts client requests
     ev_io_init(&w_stdin_io, read_stdin_cb, STDIN_FILENO, EV_READ);
     ev_io_start(loop, &w_stdin_io);
 
-    // Start infinite loop
     printf("looping\n");
     ev_loop(loop, 0);
 
