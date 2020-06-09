@@ -41,7 +41,7 @@ void read_stdin_cb(struct ev_loop *loop, struct ev_io *watcher, int revents){
 
 int main()
 {
-    struct ev_loop *loop = ev_default_loop(0);
+    struct ev_loop *loop = ev_default_loop(EVBACKEND_ALL);
     struct ev_io w_stdin_io;
 
     ev_io_init(&w_stdin_io, read_stdin_cb, STDIN_FILENO, EV_READ);
