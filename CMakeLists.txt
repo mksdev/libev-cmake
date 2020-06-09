@@ -5,6 +5,12 @@
 # Please note that the package source code is licensed under its own license.
 
 project ( libev C )
+
+if(APPLE)
+  set(CMAKE_MACOSX_RPATH 1)
+endif()
+
+
 cmake_minimum_required ( VERSION 2.8 )
 include ( cmake/dist.cmake )
 include ( configure )
@@ -25,7 +31,6 @@ target_link_libraries (ev ${EV_LIBS})
 target_include_directories(ev PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 target_include_directories(ev PUBLIC libev)
 
-add_library(ev::ev INTERFACE)
-target_link_libraries(ev::ev ev)
+add_library(ev::ev ALIAS ev)
 
 add_subdirectory(example)
