@@ -18,8 +18,8 @@ include ( configure )
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)
 
 set (EV_SRC
-  libev/ev.c
-  libev/event.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/libev/ev.c
+  ${CMAKE_CURRENT_SOURCE_DIR}/libev/event.c
 )
 
 if(WIN32)
