@@ -33,4 +33,11 @@ target_include_directories(ev PUBLIC libev)
 
 add_library(ev::ev ALIAS ev)
 
+add_library(ev_static STATIC ${EV_SRC})
+target_link_libraries (ev_static ${EV_LIBS})
+target_include_directories(ev_static PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(ev_static PUBLIC libev)
+
+add_library(ev::ev_static ALIAS ev_static)
+
 add_subdirectory(example)
